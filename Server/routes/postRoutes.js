@@ -5,6 +5,7 @@ import {
   getPost,
   getPostsByCommunity,
   deletePost,
+  searchPosts,
 } from '../controllers/postController.js';
 import { protect } from '../middleware/auth.js';
 
