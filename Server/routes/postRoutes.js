@@ -9,7 +9,7 @@ import {
 import { protect } from '../middleware/auth.js';
 
 const router = express.Router();
-
+router.get('/search', searchPosts); 
 router.get('/', getPosts);
 router.get('/:id', getPost);
 router.get('/community/:communityId', getPostsByCommunity);

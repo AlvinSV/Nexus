@@ -79,3 +79,16 @@ export const deletePost = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 };
+export const searchPosts = async (req, res) => {
+  try {
+    const posts = await Post.find({
+      $text: { $search: req.query.q }
+    })
+      .populate('author', 'username avatar')
+      .populate('community', 'name');
+
+    res.status(200).json(posts);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};

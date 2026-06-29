@@ -8,5 +8,5 @@ const postSchema = new mongoose.Schema({
   upvotes:   { type: Number, default: 0 },
   downvotes: { type: Number, default: 0 },
 }, { timestamps: true });
-
+postSchema.index({ title: 'text', body: 'text' });
 export default mongoose.model('Post', postSchema);
