@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar';
 import Sidebar from '../components/Sidebar';
 import PostCard from '../components/PostCard';
 import Modal from '../components/Modal';
+import CreatePostModal from "../components/CreatePostModal";
 
 // Default mock posts loaded with generated high-quality images
 const DEFAULT_POSTS = [
@@ -70,6 +71,8 @@ function Home() {
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState('popular');
   const [searchQuery, setSearchQuery] = useState('');
+
+  const [showCreatePost, setShowCreatePost] = useState(false);
   
   // Custom theme and modal support
   const [theme, setTheme] = useState(localStorage.getItem('nexus-theme') || 'dark');
@@ -211,6 +214,15 @@ function Home() {
               >
                 New
               </button>
+
+               <button
+                 className="filter-btn"
+                 onClick={() => setShowCreatePost(true)}
+               >
+                 + Create Post
+               </button>
+
+              
             </div>
           </div>
 
@@ -261,6 +273,13 @@ function Home() {
         </ul>
         <p>For additional support or bug reporting, contact the system administrator.</p>
       </Modal>
+      <CreatePostModal
+         isOpen={showCreatePost}
+         onClose={() => setShowCreatePost(false)}
+         onPostCreated={(newPost) => {
+          setPosts(prev => [newPost, ...prev]);
+         }}
+      />
     </div>
   );
 }
