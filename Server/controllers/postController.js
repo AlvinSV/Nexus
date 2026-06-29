@@ -4,7 +4,7 @@ import User from '../models/User.js';
 // Create post
 export const createPost = async (req, res) => {
   try {
-    const { title, body, communityId } = req.body;
+    const { title, body, communityId, imageUrl } = req.body;
     const user = await User.findOne({ clerkUserId: req.auth.userId });
 
     const post = await Post.create({
@@ -12,6 +12,7 @@ export const createPost = async (req, res) => {
       body,
       author: user._id,
       community: communityId,
+      imageUrl,
     });
 
     res.status(201).json(post);

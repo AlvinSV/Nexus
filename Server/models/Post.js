@@ -7,6 +7,7 @@ const postSchema = new mongoose.Schema({
   community: { type: mongoose.Schema.Types.ObjectId, ref: 'Community', required: true },
   upvotes:   { type: Number, default: 0 },
   downvotes: { type: Number, default: 0 },
+  imageUrl:  { type: String },
 }, { timestamps: true });
 postSchema.index({ title: 'text', body: 'text' });
 export default mongoose.model('Post', postSchema);
