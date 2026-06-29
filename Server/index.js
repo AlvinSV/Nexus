@@ -3,6 +3,11 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import { clerkMiddleware } from '@clerk/express';
 import connectDB from './config/db.js';
+import userRoutes from './routes/userRoutes.js';
+import communityRoutes from './routes/communityRoutes.js';
+import postRoutes from './routes/postRoutes.js';
+import commentRoutes from './routes/commentRoutes.js';
+import voteRoutes from './routes/voteRoutes.js';
 
 dotenv.config();
 connectDB();
@@ -17,7 +22,11 @@ app.use(clerkMiddleware());
 app.get('/', (req, res) => {
   res.json({ message: 'Nexus API running' });
 });
-
+app.use('/api/users', userRoutes);
+app.use('/api/communities', communityRoutes);
+app.use('/api/posts', postRoutes);
+app.use('/api/comments', commentRoutes);
+app.use('/api/votes', voteRoutes);
 // Routes will be added here in Stage 3
 
 const PORT = process.env.PORT || 5000;
