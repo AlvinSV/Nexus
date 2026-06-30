@@ -185,7 +185,12 @@ body {
   gap: 20px;
   position: sticky;
   top: 88px;
-  height: fit-content;
+  max-height: calc(100vh - 112px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 4px;
+  scrollbar-width: thin;
+  scrollbar-color: #232730 var(--bg-main);
 }
 
 .sidebar-panel {
