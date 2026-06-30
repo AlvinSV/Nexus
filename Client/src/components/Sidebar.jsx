@@ -85,7 +85,7 @@ function Sidebar({
 
       <div className="sidebar-panel">
         <h3 className="sidebar-title">All Communities</h3>
-        <ul className="sidebar-menu" style={{ marginBottom: '12px', maxHeight: '200px', overflowY: 'auto' }}>
+        <ul className="sidebar-menu" style={{ marginBottom: '12px', maxHeight: '300px', overflowY: 'auto' }}>
           {communities.length === 0 ? (
             <li style={{ fontSize: '12px', color: 'var(--text-muted)', padding: '10px 12px' }}>
               No communities found.
