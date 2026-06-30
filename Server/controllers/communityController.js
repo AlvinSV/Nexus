@@ -4,12 +4,28 @@ import User from '../models/User.js';
 // Create community
 export const createCommunity = async (req, res) => {
   try {
-    const { name, description } = req.body;
-    const user = await User.findOne({ clerkUserId: req.auth.userId });
+    const { name, description, bannerUrl, iconUrl } = req.body;
+    let user = await User.findOne({ clerkUserId: req.auth.userId });
+    if (!user) {
+      const baseUsername = req.auth.claims?.username || req.auth.claims?.firstName || 'user_' + req.auth.userId.substring(0, 8);
+      let finalUsername = baseUsername;
+      let suffix = 1;
+      while (await User.findOne({ username: finalUsername })) {
+        finalUsername = `${baseUsername}_${suffix}`;
+        suffix++;
+      }
+      user = await User.create({
+        clerkUserId: req.auth.userId,
+        username: finalUsername,
+        avatar: req.auth.claims?.imageUrl || ''
+      });
+    }
 
     const community = await Community.create({
       name,
       description,
+      bannerUrl: bannerUrl || '',
+      iconUrl: iconUrl || '',
       creator: user._id,
       members: [user._id],
     });
@@ -46,11 +62,28 @@ export const getCommunity = async (req, res) => {
 // Join community
 export const joinCommunity = async (req, res) => {
   try {
-    const user = await User.findOne({ clerkUserId: req.auth.userId });
-    const community = await Community.findById(req.params.id);
+    let user = await User.findOne({ clerkUserId: req.auth.userId });
+    if (!user) {
+      const baseUsername = req.auth.claims?.username || req.auth.claims?.firstName || 'user_' + req.auth.userId.substring(0, 8);
+      let finalUsername = baseUsername;
+      let suffix = 1;
+      while (await User.findOne({ username: finalUsername })) {
+        finalUsername = `${baseUsername}_${suffix}`;
+        suffix++;
+      }
+      user = await User.create({
+        clerkUserId: req.auth.userId,
+        username: finalUsername,
+        avatar: req.auth.claims?.imageUrl || ''
+      });
+    }
 
+    const community = await Community.findById(req.params.id);
     if (!community) return res.status(404).json({ message: 'Community not found' });
-    if (community.members.includes(user._id)) {
+    
+    // Safely check membership converting ObjectIds to string
+    const isMember = community.members && community.members.some(m => m.toString() === user._id.toString());
+    if (isMember) {
       return res.status(400).json({ message: 'Already a member' });
     }
 
@@ -66,12 +99,26 @@ export const joinCommunity = async (req, res) => {
 // Leave community
 export const leaveCommunity = async (req, res) => {
   try {
-    const user = await User.findOne({ clerkUserId: req.auth.userId });
-    const community = await Community.findById(req.params.id);
+    let user = await User.findOne({ clerkUserId: req.auth.userId });
+    if (!user) {
+      const baseUsername = req.auth.claims?.username || req.auth.claims?.firstName || 'user_' + req.auth.userId.substring(0, 8);
+      let finalUsername = baseUsername;
+      let suffix = 1;
+      while (await User.findOne({ username: finalUsername })) {
+        finalUsername = `${baseUsername}_${suffix}`;
+        suffix++;
+      }
+      user = await User.create({
+        clerkUserId: req.auth.userId,
+        username: finalUsername,
+        avatar: req.auth.claims?.imageUrl || ''
+      });
+    }
 
+    const community = await Community.findById(req.params.id);
     if (!community) return res.status(404).json({ message: 'Community not found' });
 
-    community.members = community.members.filter(
+    community.members = (community.members || []).filter(
       (m) => m.toString() !== user._id.toString()
     );
     await community.save();

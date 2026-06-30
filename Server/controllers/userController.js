@@ -3,11 +3,18 @@ import User from '../models/User.js';
 // Sync Clerk user to MongoDB on first login
 export const syncUser = async (req, res) => {
   try {
-    const { clerkUserId, username, avatar } = req.body;
+    const clerkUserId = req.auth.userId;
+    const { username, avatar } = req.body;
 
     let user = await User.findOne({ clerkUserId });
     if (!user) {
-      user = await User.create({ clerkUserId, username, avatar });
+      let finalUsername = username;
+      let suffix = 1;
+      while (await User.findOne({ username: finalUsername })) {
+        finalUsername = `${username}_${suffix}`;
+        suffix++;
+      }
+      user = await User.create({ clerkUserId, username: finalUsername, avatar });
     }
 
     res.status(200).json(user);

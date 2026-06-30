@@ -5,14 +5,31 @@ import User from '../models/User.js';
 export const addComment = async (req, res) => {
   try {
     const { body, postId, parentCommentId } = req.body;
-    const user = await User.findOne({ clerkUserId: req.auth.userId });
+    let user = await User.findOne({ clerkUserId: req.auth.userId });
+    if (!user) {
+      const baseUsername = req.auth.claims?.username || req.auth.claims?.firstName || 'user_' + req.auth.userId.substring(0, 8);
+      let finalUsername = baseUsername;
+      let suffix = 1;
+      while (await User.findOne({ username: finalUsername })) {
+        finalUsername = `${baseUsername}_${suffix}`;
+        suffix++;
+      }
+      user = await User.create({
+        clerkUserId: req.auth.userId,
+        username: finalUsername,
+        avatar: req.auth.claims?.imageUrl || ''
+      });
+    }
 
-    const comment = await Comment.create({
+    let comment = await Comment.create({
       body,
       author: user._id,
       post: postId,
       parentComment: parentCommentId || null,
     });
+
+    comment = await Comment.findById(comment._id)
+      .populate('author', 'username avatar');
 
     res.status(201).json(comment);
   } catch (err) {
@@ -36,7 +53,21 @@ export const getComments = async (req, res) => {
 // Delete comment
 export const deleteComment = async (req, res) => {
   try {
-    const user = await User.findOne({ clerkUserId: req.auth.userId });
+    let user = await User.findOne({ clerkUserId: req.auth.userId });
+    if (!user) {
+      const baseUsername = req.auth.claims?.username || req.auth.claims?.firstName || 'user_' + req.auth.userId.substring(0, 8);
+      let finalUsername = baseUsername;
+      let suffix = 1;
+      while (await User.findOne({ username: finalUsername })) {
+        finalUsername = `${baseUsername}_${suffix}`;
+        suffix++;
+      }
+      user = await User.create({
+        clerkUserId: req.auth.userId,
+        username: finalUsername,
+        avatar: req.auth.claims?.imageUrl || ''
+      });
+    }
     const comment = await Comment.findById(req.params.id);
 
     if (!comment) return res.status(404).json({ message: 'Comment not found' });

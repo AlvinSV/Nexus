@@ -1,0 +1,344 @@
+{
+  "users": [
+    {
+      "_id": "user-mock-1",
+      "clerkUserId": "user_clerk_1",
+      "username": "code_wizard",
+      "avatar": ""
+    },
+    {
+      "_id": "user-mock-2",
+      "clerkUserId": "user_clerk_2",
+      "username": "ramen_sensei",
+      "avatar": ""
+    },
+    {
+      "_id": "user-mock-3",
+      "clerkUserId": "user_clerk_3",
+      "username": "nature_explorer",
+      "avatar": ""
+    },
+    {
+      "_id": "user-mock-1782811540466",
+      "clerkUserId": "user_3FoEKlHQyZ1AeCE0CK1gDWW7NsG",
+      "username": "Midhun",
+      "avatar": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18zRm9FS212TjRPZmpDbmZ5eWtpbTdJcHJDYUsifQ",
+      "createdAt": "2026-06-30T09:25:40.466Z",
+      "updatedAt": "2026-06-30T09:25:40.466Z"
+    },
+    {
+      "_id": "user-mock-1782815017190",
+      "clerkUserId": "user_3FoJLCt5ReKI2VCjFCAmJ35vujB",
+      "username": "MIDHUN",
+      "avatar": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18zRm9KTElva2xjQjdwVXhaWDVmUmc2NGVvSVoifQ",
+      "createdAt": "2026-06-30T10:23:37.190Z",
+      "updatedAt": "2026-06-30T10:23:37.190Z"
+    }
+  ],
+  "communities": [
+    {
+      "_id": "comm-mock-1",
+      "name": "battlestations",
+      "description": "Futuristic coding workspace setups",
+      "bannerUrl": "/images/tech_setup.jpg",
+      "iconUrl": "",
+      "creator": "user-mock-1",
+      "members": [
+        "user-mock-1"
+      ]
+    },
+    {
+      "_id": "comm-mock-2",
+      "name": "cooking",
+      "description": "Homemade food recipes and culinary arts",
+      "bannerUrl": "/images/gourmet_ramen.jpg",
+      "iconUrl": "",
+      "creator": "user-mock-2",
+      "members": [
+        "user-mock-2",
+        "user-mock-1"
+      ]
+    },
+    {
+      "_id": "comm-mock-3",
+      "name": "nature",
+      "description": "Breathtaking views of the natural world",
+      "bannerUrl": "/images/mountain_lake.jpg",
+      "iconUrl": "",
+      "creator": "user-mock-3",
+      "members": [
+        "user-mock-3"
+      ]
+    },
+    {
+      "_id": "comm-mock-4",
+      "name": "technology",
+      "description": "Latest news and discussions in tech",
+      "bannerUrl": "/images/tech_setup.jpg",
+      "iconUrl": "",
+      "creator": "user-mock-1",
+      "members": [
+        "user-mock-1"
+      ]
+    },
+    {
+      "_id": "community-mock-1782811962347",
+      "name": "books",
+      "description": "for book nerds",
+      "bannerUrl": "",
+      "iconUrl": "",
+      "creator": "user-mock-1",
+      "members": [
+        "user-mock-1"
+      ],
+      "createdAt": "2026-06-30T09:32:42.347Z",
+      "updatedAt": "2026-06-30T09:32:42.347Z"
+    },
+    {
+      "_id": "community-mock-1782812715575",
+      "name": "books",
+      "description": "for book nerds",
+      "bannerUrl": "",
+      "iconUrl": "",
+      "creator": "user-mock-1782811540466",
+      "members": [],
+      "createdAt": "2026-06-30T09:45:15.575Z",
+      "updatedAt": "2026-06-30T09:45:15.575Z"
+    }
+  ],
+  "posts": [
+    {
+      "_id": "post-mock-1",
+      "title": "Rate my new dual-monitor futuristic coding workspace setup! 💻",
+      "body": "Finally completed my clean build. Got vertical side screens for code and logs, custom ambient LED backlighting, and a sweet mechanical keyboard. What do you think?",
+      "imageUrl": "https://images.unsplash.com/photo-1547082299-de196ea013d6?auto=format&fit=crop&w=800&q=80",
+      "upvotes": 1420,
+      "downvotes": 12,
+      "votes": [],
+      "author": "user-mock-1",
+      "community": "comm-mock-1",
+      "createdAt": "2026-06-29T20:25:38.333Z"
+    },
+    {
+      "_id": "post-mock-4",
+      "title": "Minimalist Walnut Wood Desk Build 🪵",
+      "body": "Decided to go for a natural wood look. Desktop is custom-cut walnut oiled with Osmo polyx, mounted on dual motor standing legs. Keeping cables 100% hidden was a pain but so worth it!",
+      "imageUrl": "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=800&q=80",
+      "upvotes": 450,
+      "downvotes": 3,
+      "votes": [],
+      "author": "user-mock-1",
+      "community": "comm-mock-1",
+      "createdAt": "2026-06-29T08:25:38.334Z"
+    },
+    {
+      "_id": "post-mock-5",
+      "title": "First time trying custom hardline watercooling loop! 💧",
+      "body": "Bent the PETG tubes myself. Had to redo three of them due to kinks, but the final leak test passed. Temperatures dropped by 15C under load compared to the old AIO!",
+      "imageUrl": "",
+      "upvotes": 280,
+      "downvotes": 5,
+      "votes": [],
+      "author": "user-mock-1",
+      "community": "comm-mock-1",
+      "createdAt": "2026-06-28T22:25:38.334Z"
+    },
+    {
+      "_id": "post-mock-6",
+      "title": "Cozy late-night coding vibe 🌙",
+      "body": "Dim ambient orange backlight, rain pattering on the window, and a fresh cup of coffee. The ultimate productive headspace.",
+      "imageUrl": "https://images.unsplash.com/photo-1585776245991-cf89dd7fc73a?auto=format&fit=crop&w=800&q=80",
+      "upvotes": 610,
+      "downvotes": 2,
+      "votes": [],
+      "author": "user-mock-1",
+      "community": "comm-mock-1",
+      "createdAt": "2026-06-28T10:25:38.334Z"
+    },
+    {
+      "_id": "post-mock-2",
+      "title": "Spent 8 hours perfecting this homemade tonkotsu ramen. Absolutely worth it! 🍜",
+      "body": "The broth was simmered overnight. Chashu pork belly was melt-in-your-mouth tender, and the soft-boiled ajitama eggs were perfectly jammy. Recipe in comments if anyone wants it!",
+      "imageUrl": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=800&q=80",
+      "upvotes": 894,
+      "downvotes": 4,
+      "votes": [],
+      "author": "user-mock-2",
+      "community": "comm-mock-2",
+      "createdAt": "2026-06-29T17:25:38.334Z"
+    },
+    {
+      "_id": "post-mock-7",
+      "title": "Jiggly Japanese Souffle Pancakes! 🥞",
+      "body": "Finally got them to rise properly without collapsing! The trick is whipping the egg whites to extremely stiff peaks and cooking them on low heat with a lid + a splash of water for steam.",
+      "imageUrl": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?auto=format&fit=crop&w=800&q=80",
+      "upvotes": 340,
+      "downvotes": 2,
+      "votes": [],
+      "author": "user-mock-2",
+      "community": "comm-mock-2",
+      "createdAt": "2026-06-29T04:25:38.334Z"
+    },
+    {
+      "_id": "post-mock-8",
+      "title": "Woodfired Neapolitan Pizza in a portable oven 🍕",
+      "body": "72-hour cold fermented dough, San Marzano tomatoes, fresh mozzarella, fresh basil, and a drizzle of extra virgin olive oil. Baked at 450C in just 60 seconds!",
+      "imageUrl": "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=80",
+      "upvotes": 750,
+      "downvotes": 6,
+      "votes": [],
+      "author": "user-mock-2",
+      "community": "comm-mock-2",
+      "createdAt": "2026-06-28T17:25:38.334Z"
+    },
+    {
+      "_id": "post-mock-9",
+      "title": "Fluffy Rosemary & Sea Salt Focaccia 🍞",
+      "body": "Drenched in high-quality olive oil. The dimples are so satisfying to press down! Super crunchy crust with an incredibly soft, airy interior.",
+      "imageUrl": "",
+      "upvotes": 520,
+      "downvotes": 2,
+      "votes": [],
+      "author": "user-mock-2",
+      "community": "comm-mock-2",
+      "createdAt": "2026-06-28T04:25:38.334Z"
+    },
+    {
+      "_id": "post-mock-3",
+      "title": "Woke up at 4 AM to capture this sunrise at Lake Moraine, Alberta. Completely breathtaking.",
+      "body": "The mist hovering over the turquoise water with the snow-dusted peaks in the background was a spiritual experience. Highly recommend visiting early to beat the crowds!",
+      "imageUrl": "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=800&q=80",
+      "upvotes": 2154,
+      "downvotes": 18,
+      "votes": [],
+      "author": "user-mock-3",
+      "community": "comm-mock-3",
+      "createdAt": "2026-06-29T13:25:38.334Z"
+    },
+    {
+      "_id": "post-mock-10",
+      "title": "Lush green waterfalls of Oregon forest 🌲",
+      "body": "Hiked through the mist to find this hidden gem deep in the Columbia River Gorge. The surrounding moss and ferns make it look like a primeval jungle!",
+      "imageUrl": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80",
+      "upvotes": 890,
+      "downvotes": 10,
+      "votes": [],
+      "author": "user-mock-3",
+      "community": "comm-mock-3",
+      "createdAt": "2026-06-29T02:25:38.334Z"
+    },
+    {
+      "_id": "post-mock-11",
+      "title": "Joshua Tree under the Milky Way galaxy 🌌",
+      "body": "A single 25-second exposure shot during the new moon. The desert sky is incredibly dark once you get far enough away from Palm Springs lights.",
+      "imageUrl": "",
+      "upvotes": 1250,
+      "downvotes": 15,
+      "votes": [],
+      "author": "user-mock-3",
+      "community": "comm-mock-3",
+      "createdAt": "2026-06-28T14:25:38.334Z"
+    },
+    {
+      "_id": "post-mock-12",
+      "title": "Lavender lines stretching into the Provence sunset 💜",
+      "body": "Walking through these fields in southern France smells absolutely heavenly. Captured this during peak bloom in late June.",
+      "imageUrl": "https://images.unsplash.com/photo-1500627869374-13cd993b1115?auto=format&fit=crop&w=800&q=80",
+      "upvotes": 1420,
+      "downvotes": 11,
+      "votes": [],
+      "author": "user-mock-3",
+      "community": "comm-mock-3",
+      "createdAt": "2026-06-27T22:25:38.334Z"
+    },
+    {
+      "_id": "post-mock-13",
+      "title": "Is AI replacing junior developer roles or shifting expectations? 🤖",
+      "body": "I have noticed a lot of discussion about entry-level devs struggling. In my team, we are not hiring less, but we do expect juniors to be comfortable using AI assistants to write boilerplate, focus more on reading/reviewing code, understanding system architecture, and writing solid test suites. What are your thoughts?",
+      "imageUrl": "",
+      "upvotes": 980,
+      "downvotes": 22,
+      "votes": [],
+      "author": "user-mock-1",
+      "community": "comm-mock-4",
+      "createdAt": "2026-06-29T18:25:38.334Z"
+    },
+    {
+      "_id": "post-mock-14",
+      "title": "My review of the new mechanical switch: Holy Panda X ⌨️",
+      "body": "Compared to the original Run3 Holy Pandas, these have a slightly rounder tactile bump and less housing wobble. Sound profile is deeper and less clacky. Highly recommend lubing with Krytox 205g0.",
+      "imageUrl": "https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?auto=format&fit=crop&w=800&q=80",
+      "upvotes": 310,
+      "downvotes": 4,
+      "votes": [],
+      "author": "user-mock-1",
+      "community": "comm-mock-4",
+      "createdAt": "2026-06-29T07:25:38.334Z"
+    },
+    {
+      "_id": "post-mock-15",
+      "title": "Why Rust is gaining massive adoption in systems programming 🦀",
+      "body": "The borrow checker is compile-time magic. You get C/C++ level bare-metal execution speeds without the risk of segmentation faults, use-after-free, or data races in concurrent code. Its no wonder Microsoft, AWS, and Linux are embedding it in their core kernels.",
+      "imageUrl": "",
+      "upvotes": 840,
+      "downvotes": 12,
+      "votes": [],
+      "author": "user-mock-1",
+      "community": "comm-mock-4",
+      "createdAt": "2026-06-28T20:25:38.334Z"
+    },
+    {
+      "_id": "post-mock-16",
+      "title": "Hands-on review of the latest lightweight VR headset 🕶️",
+      "body": "At just 250g, the comfort level is miles ahead of the Quest or Index. The pancake lenses provide edge-to-edge clarity, although the black levels are not quite as deep as OLED panels. Pass-through distortion is minimal, making AR workspace productivity very viable.",
+      "imageUrl": "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&fit=crop&w=800&q=80",
+      "upvotes": 550,
+      "downvotes": 8,
+      "votes": [],
+      "author": "user-mock-1",
+      "community": "comm-mock-4",
+      "createdAt": "2026-06-27T20:25:38.334Z"
+    },
+    {
+      "_id": "post-mock-1782813074040",
+      "title": "i love cooking",
+      "body": "cooking is fun",
+      "author": "user-mock-1782811540466",
+      "community": "comm-mock-2",
+      "imageUrl": "",
+      "createdAt": "2026-06-30T09:51:14.040Z",
+      "updatedAt": "2026-06-30T09:51:14.040Z",
+      "upvotes": 0,
+      "downvotes": -1
+    }
+  ],
+  "comments": [
+    {
+      "_id": "comment-mock-1782814234212",
+      "body": "good food",
+      "author": "user-mock-1782811540466",
+      "post": "post-mock-2",
+      "parentComment": null,
+      "createdAt": "2026-06-30T10:10:34.212Z",
+      "updatedAt": "2026-06-30T10:10:34.212Z"
+    }
+  ],
+  "votes": [
+    {
+      "_id": "vote-mock-1782814110434",
+      "user": "user-mock-1782811540466",
+      "post": "post-mock-1782813074040",
+      "type": "up",
+      "createdAt": "2026-06-30T10:08:30.434Z",
+      "updatedAt": "2026-06-30T10:08:30.434Z"
+    },
+    {
+      "_id": "vote-mock-1782814183242",
+      "user": "user-mock-1782811540466",
+      "post": "post-mock-7",
+      "type": "down",
+      "createdAt": "2026-06-30T10:09:43.242Z",
+      "updatedAt": "2026-06-30T10:09:43.242Z"
+    }
+  ]
+}

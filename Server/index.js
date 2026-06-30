@@ -11,12 +11,22 @@ import voteRoutes from './routes/voteRoutes.js';
 import dns from 'dns';
 dns.setServers(['8.8.8.8','8.8.4.4']);
 dotenv.config();
-connectDB();
+await connectDB();
 
 const app = express();
 
 app.use(cors({ origin: 'http://localhost:5173' }));
-app.use(express.json());
+app.use((req, res, next) => {
+  console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
+  const originalSend = res.send;
+  res.send = function(body) {
+    console.log(`[Response] ${res.statusCode} to ${req.method} ${req.url}`);
+    return originalSend.call(this, body);
+  };
+  next();
+});
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ limit: '10mb', extended: true }));
 app.use(clerkMiddleware());
 
 // Test route

@@ -5,15 +5,33 @@ import User from '../models/User.js';
 export const createPost = async (req, res) => {
   try {
     const { title, body, communityId, imageUrl } = req.body;
-    const user = await User.findOne({ clerkUserId: req.auth.userId });
+    let user = await User.findOne({ clerkUserId: req.auth.userId });
+    if (!user) {
+      const baseUsername = req.auth.claims?.username || req.auth.claims?.firstName || 'user_' + req.auth.userId.substring(0, 8);
+      let finalUsername = baseUsername;
+      let suffix = 1;
+      while (await User.findOne({ username: finalUsername })) {
+        finalUsername = `${baseUsername}_${suffix}`;
+        suffix++;
+      }
+      user = await User.create({
+        clerkUserId: req.auth.userId,
+        username: finalUsername,
+        avatar: req.auth.claims?.imageUrl || ''
+      });
+    }
 
-    const post = await Post.create({
+    let post = await Post.create({
       title,
       body,
       author: user._id,
       community: communityId,
       imageUrl,
     });
+
+    post = await Post.findById(post._id)
+      .populate('author', 'username avatar')
+      .populate('community', 'name');
 
     res.status(201).json(post);
   } catch (err) {
@@ -41,6 +59,7 @@ export const getPostsByCommunity = async (req, res) => {
   try {
     const posts = await Post.find({ community: req.params.communityId })
       .populate('author', 'username avatar')
+      .populate('community', 'name')
       .sort({ upvotes: -1 });
 
     res.status(200).json(posts);
@@ -66,7 +85,21 @@ export const getPost = async (req, res) => {
 // Delete post
 export const deletePost = async (req, res) => {
   try {
-    const user = await User.findOne({ clerkUserId: req.auth.userId });
+    let user = await User.findOne({ clerkUserId: req.auth.userId });
+    if (!user) {
+      const baseUsername = req.auth.claims?.username || req.auth.claims?.firstName || 'user_' + req.auth.userId.substring(0, 8);
+      let finalUsername = baseUsername;
+      let suffix = 1;
+      while (await User.findOne({ username: finalUsername })) {
+        finalUsername = `${baseUsername}_${suffix}`;
+        suffix++;
+      }
+      user = await User.create({
+        clerkUserId: req.auth.userId,
+        username: finalUsername,
+        avatar: req.auth.claims?.imageUrl || ''
+      });
+    }
     const post = await Post.findById(req.params.id);
 
     if (!post) return res.status(404).json({ message: 'Post not found' });
