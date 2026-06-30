@@ -25,8 +25,8 @@ app.use((req, res, next) => {
   };
   next();
 });
-app.use(express.json({ limit: '10mb' }));
-app.use(express.urlencoded({ limit: '10mb', extended: true }));
+app.use(express.json({ limit: '30mb' }));
+app.use(express.urlencoded({ limit: '30mb', extended: true }));
 app.use(clerkMiddleware());
 
 // Test route
