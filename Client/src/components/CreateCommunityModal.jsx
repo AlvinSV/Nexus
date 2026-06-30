@@ -95,12 +95,14 @@ function CreateCommunityModal({ isOpen, onClose, onCommunityCreated }) {
         }
       );
 
+      console.log("Community created successfully:", res.data);
       onCommunityCreated(res.data);
       handleClose();
     } catch (err) {
-      console.error(err);
-      setError(err.response?.data?.message || "Failed to create community");
-    } finally {
+      console.error("Create community failed:", err);
+      console.error("Response data:", err.response?.data);
+      console.error("Status:", err.response?.status);
+      setError(err.response?.data?.message || err.message || "Failed to create community");
       setSubmitting(false);
     }
   };
