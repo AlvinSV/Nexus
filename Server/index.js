@@ -15,7 +15,7 @@ await connectDB();
 
 const app = express();
 
-app.use(cors({ origin: process.env.CLIENT_URL || 'http://localhost:5173' }));
+app.use(cors({ origin: 'https://nexus-i91zlyydy-nexusjk.vercel.app' }));
 app.use((req, res, next) => {
   console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
   const originalSend = res.send;
